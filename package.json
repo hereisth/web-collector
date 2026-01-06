@@ -1,0 +1,31 @@
+{
+  "name": "web-collector",
+  "version": "1.0.0",
+  "private": true,
+  "license": "CC-BY-NC-SA-4.0",
+  "description": "A bookmark manager with web frontend and Go backend",
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter web dev\" \"make dev-backend\"",
+    "dev:web": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "build:web": "pnpm --filter web build",
+    "build:backend": "cd apps/backend && go build -o ./dist/backend ./cmd/server",
+    "build:all": "pnpm build:web && pnpm build:backend",
+    "lint": "pnpm --filter web lint",
+    "test": "pnpm --filter web test",
+    "test:backend": "cd apps/backend && go test ./...",
+    "clean": "rm -rf node_modules apps/*/node_modules apps/*/dist",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "typecheck": "pnpm --filter web typecheck"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "concurrently": "^8.2.2",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
+}
